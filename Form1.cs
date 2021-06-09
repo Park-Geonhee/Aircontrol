@@ -309,7 +309,7 @@ namespace WindowsFormsApp1
             
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-
+            //차트 초기화
             listView2.Items.Clear();
             chart2.Series[0].Points.Clear();
             chart2.Series[1].Points.Clear();
@@ -338,7 +338,8 @@ namespace WindowsFormsApp1
             }
 
             rdr.Close();
-
+            
+            //차트 내 데이터 최댓값, 최솟값 얻기
             string call_Maxtmp = string.Format("select max(tmp) from sensors");
             MySqlCommand cmd_maxt = new MySqlCommand(call_Maxtmp, conn);
             MySqlDataReader rd_maxt = cmd_maxt.ExecuteReader();
@@ -374,9 +375,8 @@ namespace WindowsFormsApp1
 
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-
+            //차트 초기화
             listView2.Items.Clear();
-
             chart2.Series[0].Points.Clear();
             chart2.Series[1].Points.Clear();
             i = 0;
@@ -408,7 +408,8 @@ namespace WindowsFormsApp1
 
             }
             rdr.Close();
-
+            
+            //차트 내 최댓값, 최솟값 얻기
             string call_Max_tmp = string.Format("select max(tmp) FROM sensors WHERE data_day >= '{0}' AND data_day <= '{1}'"
                 , date_start, date_end);
             MySqlCommand cmd_maxt = new MySqlCommand(call_Max_tmp, conn);
