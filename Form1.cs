@@ -387,8 +387,8 @@ namespace WindowsFormsApp1
             String date_start = date_from.ToString("yyyy-MM-dd HH:mm:ss");
             String date_end = date_to.ToString("yyyy-MM-dd HH:mm:ss");
 
-            string sql_sel = string.Format("select * from sensors where data_day >= '{0}' and data_day <='{1}'"
-            , date_start,date_end);
+            string sql_sel = string.Format("select * from sensors where data_day"+
+            ">= '{0}' and data_day <='{1}'", date_start,date_end);
 
             MySqlCommand cmd = new MySqlCommand(sql_sel, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
