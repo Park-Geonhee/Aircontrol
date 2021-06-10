@@ -387,11 +387,11 @@ namespace WindowsFormsApp1
             String date_start = date_from.ToString("yyyy-MM-dd HH:mm:ss");
             String date_end = date_to.ToString("yyyy-MM-dd HH:mm:ss");
 
-            string sql_sel = string.Format("select * from sensors where data_day >= '{0}' and data_day <='{1}';", date_start,date_end);
+            string sql_sel = string.Format("select * from sensors where data_day >= '{0}' and data_day <='{1}'"
+            , date_start,date_end);
 
             MySqlCommand cmd = new MySqlCommand(sql_sel, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
-
 
             while (rdr.Read())
             {
@@ -399,13 +399,11 @@ namespace WindowsFormsApp1
 
                 selecteditem.SubItems.Add(rdr[2].ToString());
                 selecteditem.SubItems.Add(rdr[3].ToString());
-
                 listView2.Items.Add(selecteditem);
 
                 chart2.Series[0].Points.AddXY(i, rdr[1]);
                 chart2.Series[1].Points.AddXY(i, rdr[2]);
                 i++;
-
             }
             rdr.Close();
             
