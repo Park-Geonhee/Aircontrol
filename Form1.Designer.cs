@@ -1,4 +1,4 @@
-﻿
+
 namespace WindowsFormsApp1
 {
     partial class Form1
@@ -30,14 +30,14 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button_Send = new System.Windows.Forms.Button();
@@ -60,6 +60,11 @@ namespace WindowsFormsApp1
             this.comboBox_BPS = new System.Windows.Forms.ComboBox();
             this.comboBox_Port = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.domainUpDown_desire_wet = new System.Windows.Forms.DomainUpDown();
+            this.button_insert_desire = new System.Windows.Forms.Button();
+            this.domainUpDown_desire_temp = new System.Windows.Forms.DomainUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.button_Heater = new System.Windows.Forms.Button();
             this.button_Aircon = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -101,11 +106,19 @@ namespace WindowsFormsApp1
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.textBox_room1 = new System.Windows.Forms.TextBox();
+            this.textBox_room2 = new System.Windows.Forms.TextBox();
+            this.textBox_room3 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.verticalProgressBar_room3 = new WindowsFormsApp1.VerticalProgressBar();
+            this.verticalProgressBar_room2 = new WindowsFormsApp1.VerticalProgressBar();
+            this.verticalProgressBar_room1 = new WindowsFormsApp1.VerticalProgressBar();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -115,6 +128,7 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -125,7 +139,6 @@ namespace WindowsFormsApp1
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
-            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(12, 61);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
@@ -161,35 +174,36 @@ namespace WindowsFormsApp1
             // 
             // button_Send
             // 
-            this.button_Send.Location = new System.Drawing.Point(658, 164);
+            this.button_Send.Location = new System.Drawing.Point(693, 185);
             this.button_Send.Name = "button_Send";
-            this.button_Send.Size = new System.Drawing.Size(75, 23);
+            this.button_Send.Size = new System.Drawing.Size(50, 23);
             this.button_Send.TabIndex = 13;
             this.button_Send.Text = "Send";
             this.button_Send.UseVisualStyleBackColor = true;
+            this.button_Send.Click += new System.EventHandler(this.button_Send_Click);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBox_SendData);
-            this.groupBox4.Location = new System.Drawing.Point(250, 152);
+            this.groupBox4.Location = new System.Drawing.Point(250, 164);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(393, 121);
+            this.groupBox4.Size = new System.Drawing.Size(437, 109);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Send Data";
             // 
             // textBox_SendData
             // 
-            this.textBox_SendData.Location = new System.Drawing.Point(14, 21);
+            this.textBox_SendData.Location = new System.Drawing.Point(7, 21);
             this.textBox_SendData.Name = "textBox_SendData";
-            this.textBox_SendData.Size = new System.Drawing.Size(364, 21);
+            this.textBox_SendData.Size = new System.Drawing.Size(424, 21);
             this.textBox_SendData.TabIndex = 0;
             // 
             // button_Clear
             // 
-            this.button_Clear.Location = new System.Drawing.Point(658, 43);
+            this.button_Clear.Location = new System.Drawing.Point(693, 43);
             this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(75, 23);
+            this.button_Clear.Size = new System.Drawing.Size(50, 23);
             this.button_Clear.TabIndex = 11;
             this.button_Clear.Text = "Clear";
             this.button_Clear.UseVisualStyleBackColor = true;
@@ -201,7 +215,7 @@ namespace WindowsFormsApp1
             this.groupBox2.Controls.Add(this.textBox_ReceiveData);
             this.groupBox2.Location = new System.Drawing.Point(250, 24);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(393, 122);
+            this.groupBox2.Size = new System.Drawing.Size(437, 134);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Receive Data";
@@ -221,7 +235,7 @@ namespace WindowsFormsApp1
             this.textBox_ReceiveData.Multiline = true;
             this.textBox_ReceiveData.Name = "textBox_ReceiveData";
             this.textBox_ReceiveData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_ReceiveData.Size = new System.Drawing.Size(371, 92);
+            this.textBox_ReceiveData.Size = new System.Drawing.Size(424, 107);
             this.textBox_ReceiveData.TabIndex = 0;
             // 
             // label6
@@ -346,6 +360,11 @@ namespace WindowsFormsApp1
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.domainUpDown_desire_wet);
+            this.tabPage2.Controls.Add(this.button_insert_desire);
+            this.tabPage2.Controls.Add(this.domainUpDown_desire_temp);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.button_Heater);
             this.tabPage2.Controls.Add(this.button_Aircon);
             this.tabPage2.Controls.Add(this.chart1);
@@ -374,6 +393,174 @@ namespace WindowsFormsApp1
             this.tabPage2.Text = "Monitoring";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // domainUpDown_desire_wet
+            // 
+            this.domainUpDown_desire_wet.Items.Add("80");
+            this.domainUpDown_desire_wet.Items.Add("79");
+            this.domainUpDown_desire_wet.Items.Add("78");
+            this.domainUpDown_desire_wet.Items.Add("77");
+            this.domainUpDown_desire_wet.Items.Add("76");
+            this.domainUpDown_desire_wet.Items.Add("75");
+            this.domainUpDown_desire_wet.Items.Add("74");
+            this.domainUpDown_desire_wet.Items.Add("73");
+            this.domainUpDown_desire_wet.Items.Add("72");
+            this.domainUpDown_desire_wet.Items.Add("71");
+            this.domainUpDown_desire_wet.Items.Add("70");
+            this.domainUpDown_desire_wet.Items.Add("69");
+            this.domainUpDown_desire_wet.Items.Add("68");
+            this.domainUpDown_desire_wet.Items.Add("67");
+            this.domainUpDown_desire_wet.Items.Add("66");
+            this.domainUpDown_desire_wet.Items.Add("65");
+            this.domainUpDown_desire_wet.Items.Add("64");
+            this.domainUpDown_desire_wet.Items.Add("63");
+            this.domainUpDown_desire_wet.Items.Add("62");
+            this.domainUpDown_desire_wet.Items.Add("61");
+            this.domainUpDown_desire_wet.Items.Add("60");
+            this.domainUpDown_desire_wet.Items.Add("59");
+            this.domainUpDown_desire_wet.Items.Add("58");
+            this.domainUpDown_desire_wet.Items.Add("57");
+            this.domainUpDown_desire_wet.Items.Add("56");
+            this.domainUpDown_desire_wet.Items.Add("55");
+            this.domainUpDown_desire_wet.Items.Add("54");
+            this.domainUpDown_desire_wet.Items.Add("53");
+            this.domainUpDown_desire_wet.Items.Add("52");
+            this.domainUpDown_desire_wet.Items.Add("51");
+            this.domainUpDown_desire_wet.Items.Add("50");
+            this.domainUpDown_desire_wet.Items.Add("49");
+            this.domainUpDown_desire_wet.Items.Add("48");
+            this.domainUpDown_desire_wet.Items.Add("47");
+            this.domainUpDown_desire_wet.Items.Add("46");
+            this.domainUpDown_desire_wet.Items.Add("45");
+            this.domainUpDown_desire_wet.Items.Add("44");
+            this.domainUpDown_desire_wet.Items.Add("43");
+            this.domainUpDown_desire_wet.Items.Add("42");
+            this.domainUpDown_desire_wet.Items.Add("41");
+            this.domainUpDown_desire_wet.Items.Add("40");
+            this.domainUpDown_desire_wet.Items.Add("39");
+            this.domainUpDown_desire_wet.Items.Add("38");
+            this.domainUpDown_desire_wet.Items.Add("37");
+            this.domainUpDown_desire_wet.Items.Add("36");
+            this.domainUpDown_desire_wet.Items.Add("35");
+            this.domainUpDown_desire_wet.Items.Add("34");
+            this.domainUpDown_desire_wet.Items.Add("33");
+            this.domainUpDown_desire_wet.Items.Add("32");
+            this.domainUpDown_desire_wet.Items.Add("31");
+            this.domainUpDown_desire_wet.Items.Add("30");
+            this.domainUpDown_desire_wet.Items.Add("29");
+            this.domainUpDown_desire_wet.Items.Add("28");
+            this.domainUpDown_desire_wet.Items.Add("27");
+            this.domainUpDown_desire_wet.Items.Add("26");
+            this.domainUpDown_desire_wet.Items.Add("25");
+            this.domainUpDown_desire_wet.Items.Add("24");
+            this.domainUpDown_desire_wet.Items.Add("23");
+            this.domainUpDown_desire_wet.Items.Add("22");
+            this.domainUpDown_desire_wet.Items.Add("21");
+            this.domainUpDown_desire_wet.Items.Add("20");
+            this.domainUpDown_desire_wet.Items.Add("19");
+            this.domainUpDown_desire_wet.Items.Add("18");
+            this.domainUpDown_desire_wet.Items.Add("17");
+            this.domainUpDown_desire_wet.Items.Add("16");
+            this.domainUpDown_desire_wet.Items.Add("15");
+            this.domainUpDown_desire_wet.Items.Add("14");
+            this.domainUpDown_desire_wet.Items.Add("13");
+            this.domainUpDown_desire_wet.Items.Add("12");
+            this.domainUpDown_desire_wet.Items.Add("11");
+            this.domainUpDown_desire_wet.Items.Add("10");
+            this.domainUpDown_desire_wet.Items.Add("9");
+            this.domainUpDown_desire_wet.Items.Add("8");
+            this.domainUpDown_desire_wet.Items.Add("7");
+            this.domainUpDown_desire_wet.Items.Add("6");
+            this.domainUpDown_desire_wet.Items.Add("5");
+            this.domainUpDown_desire_wet.Items.Add("4");
+            this.domainUpDown_desire_wet.Items.Add("3");
+            this.domainUpDown_desire_wet.Items.Add("2");
+            this.domainUpDown_desire_wet.Items.Add("1");
+            this.domainUpDown_desire_wet.Items.Add("0");
+            this.domainUpDown_desire_wet.Location = new System.Drawing.Point(286, 32);
+            this.domainUpDown_desire_wet.Name = "domainUpDown_desire_wet";
+            this.domainUpDown_desire_wet.Size = new System.Drawing.Size(65, 21);
+            this.domainUpDown_desire_wet.TabIndex = 4;
+            this.domainUpDown_desire_wet.SelectedItemChanged += new System.EventHandler(this.domainUpDown_desire_wet_SelectedItemChanged);
+            // 
+            // button_insert_desire
+            // 
+            this.button_insert_desire.Location = new System.Drawing.Point(355, 30);
+            this.button_insert_desire.Name = "button_insert_desire";
+            this.button_insert_desire.Size = new System.Drawing.Size(41, 23);
+            this.button_insert_desire.TabIndex = 7;
+            this.button_insert_desire.Text = "실행";
+            this.button_insert_desire.UseVisualStyleBackColor = true;
+            this.button_insert_desire.Click += new System.EventHandler(this.button_insert_desire_Click);
+            // 
+            // domainUpDown_desire_temp
+            // 
+            this.domainUpDown_desire_temp.Items.Add("40");
+            this.domainUpDown_desire_temp.Items.Add("39");
+            this.domainUpDown_desire_temp.Items.Add("38");
+            this.domainUpDown_desire_temp.Items.Add("37");
+            this.domainUpDown_desire_temp.Items.Add("36");
+            this.domainUpDown_desire_temp.Items.Add("35");
+            this.domainUpDown_desire_temp.Items.Add("34");
+            this.domainUpDown_desire_temp.Items.Add("33");
+            this.domainUpDown_desire_temp.Items.Add("32");
+            this.domainUpDown_desire_temp.Items.Add("31");
+            this.domainUpDown_desire_temp.Items.Add("30");
+            this.domainUpDown_desire_temp.Items.Add("29");
+            this.domainUpDown_desire_temp.Items.Add("28");
+            this.domainUpDown_desire_temp.Items.Add("27");
+            this.domainUpDown_desire_temp.Items.Add("26");
+            this.domainUpDown_desire_temp.Items.Add("25");
+            this.domainUpDown_desire_temp.Items.Add("24");
+            this.domainUpDown_desire_temp.Items.Add("23");
+            this.domainUpDown_desire_temp.Items.Add("22");
+            this.domainUpDown_desire_temp.Items.Add("21");
+            this.domainUpDown_desire_temp.Items.Add("20");
+            this.domainUpDown_desire_temp.Items.Add("19");
+            this.domainUpDown_desire_temp.Items.Add("18");
+            this.domainUpDown_desire_temp.Items.Add("17");
+            this.domainUpDown_desire_temp.Items.Add("16");
+            this.domainUpDown_desire_temp.Items.Add("15");
+            this.domainUpDown_desire_temp.Items.Add("14");
+            this.domainUpDown_desire_temp.Items.Add("13");
+            this.domainUpDown_desire_temp.Items.Add("12");
+            this.domainUpDown_desire_temp.Items.Add("11");
+            this.domainUpDown_desire_temp.Items.Add("10");
+            this.domainUpDown_desire_temp.Items.Add("9");
+            this.domainUpDown_desire_temp.Items.Add("8");
+            this.domainUpDown_desire_temp.Items.Add("7");
+            this.domainUpDown_desire_temp.Items.Add("6");
+            this.domainUpDown_desire_temp.Items.Add("5");
+            this.domainUpDown_desire_temp.Items.Add("4");
+            this.domainUpDown_desire_temp.Items.Add("3");
+            this.domainUpDown_desire_temp.Items.Add("2");
+            this.domainUpDown_desire_temp.Items.Add("1");
+            this.domainUpDown_desire_temp.Items.Add("0");
+            this.domainUpDown_desire_temp.Location = new System.Drawing.Point(212, 32);
+            this.domainUpDown_desire_temp.Name = "domainUpDown_desire_temp";
+            this.domainUpDown_desire_temp.Size = new System.Drawing.Size(65, 21);
+            this.domainUpDown_desire_temp.TabIndex = 3;
+            this.domainUpDown_desire_temp.TextChanged += new System.EventHandler(this.domainUpDown_desire_temp_TextChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("굴림", 10F);
+            this.label17.Location = new System.Drawing.Point(283, 11);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(68, 14);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "희망 습도";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("굴림", 10F);
+            this.label14.Location = new System.Drawing.Point(209, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(68, 14);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "희망 온도";
+            // 
             // button_Heater
             // 
             this.button_Heater.Location = new System.Drawing.Point(664, 193);
@@ -396,22 +583,22 @@ namespace WindowsFormsApp1
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(261, 59);
             this.chart1.Name = "chart1";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "온도";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.Name = "습도";
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "온도";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "습도";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(485, 227);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
@@ -419,7 +606,7 @@ namespace WindowsFormsApp1
             // label_lwet
             // 
             this.label_lwet.AutoSize = true;
-            this.label_lwet.Location = new System.Drawing.Point(662, 44);
+            this.label_lwet.Location = new System.Drawing.Point(707, 38);
             this.label_lwet.Name = "label_lwet";
             this.label_lwet.Size = new System.Drawing.Size(11, 12);
             this.label_lwet.TabIndex = 2;
@@ -428,7 +615,7 @@ namespace WindowsFormsApp1
             // label_hwet
             // 
             this.label_hwet.AutoSize = true;
-            this.label_hwet.Location = new System.Drawing.Point(440, 44);
+            this.label_hwet.Location = new System.Drawing.Point(569, 38);
             this.label_hwet.Name = "label_hwet";
             this.label_hwet.Size = new System.Drawing.Size(11, 12);
             this.label_hwet.TabIndex = 2;
@@ -437,7 +624,7 @@ namespace WindowsFormsApp1
             // label_pwet
             // 
             this.label_pwet.AutoSize = true;
-            this.label_pwet.Location = new System.Drawing.Point(178, 44);
+            this.label_pwet.Location = new System.Drawing.Point(129, 38);
             this.label_pwet.Name = "label_pwet";
             this.label_pwet.Size = new System.Drawing.Size(11, 12);
             this.label_pwet.TabIndex = 2;
@@ -446,7 +633,7 @@ namespace WindowsFormsApp1
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(618, 44);
+            this.label18.Location = new System.Drawing.Point(663, 38);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(41, 12);
             this.label18.TabIndex = 2;
@@ -455,7 +642,7 @@ namespace WindowsFormsApp1
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(396, 44);
+            this.label13.Location = new System.Drawing.Point(525, 38);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 12);
             this.label13.TabIndex = 2;
@@ -464,7 +651,7 @@ namespace WindowsFormsApp1
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(134, 44);
+            this.label10.Location = new System.Drawing.Point(85, 38);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 2;
@@ -473,7 +660,7 @@ namespace WindowsFormsApp1
             // label_ltmp
             // 
             this.label_ltmp.AutoSize = true;
-            this.label_ltmp.Location = new System.Drawing.Point(574, 44);
+            this.label_ltmp.Location = new System.Drawing.Point(646, 38);
             this.label_ltmp.Name = "label_ltmp";
             this.label_ltmp.Size = new System.Drawing.Size(11, 12);
             this.label_ltmp.TabIndex = 2;
@@ -482,7 +669,7 @@ namespace WindowsFormsApp1
             // label_htmp
             // 
             this.label_htmp.AutoSize = true;
-            this.label_htmp.Location = new System.Drawing.Point(352, 44);
+            this.label_htmp.Location = new System.Drawing.Point(508, 38);
             this.label_htmp.Name = "label_htmp";
             this.label_htmp.Size = new System.Drawing.Size(11, 12);
             this.label_htmp.TabIndex = 2;
@@ -491,7 +678,7 @@ namespace WindowsFormsApp1
             // label_ptmp
             // 
             this.label_ptmp.AutoSize = true;
-            this.label_ptmp.Location = new System.Drawing.Point(90, 44);
+            this.label_ptmp.Location = new System.Drawing.Point(65, 38);
             this.label_ptmp.Name = "label_ptmp";
             this.label_ptmp.Size = new System.Drawing.Size(11, 12);
             this.label_ptmp.TabIndex = 2;
@@ -500,7 +687,7 @@ namespace WindowsFormsApp1
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(530, 44);
+            this.label16.Location = new System.Drawing.Point(602, 38);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 12);
             this.label16.TabIndex = 2;
@@ -509,7 +696,7 @@ namespace WindowsFormsApp1
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(308, 44);
+            this.label11.Location = new System.Drawing.Point(464, 38);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 2;
@@ -518,7 +705,7 @@ namespace WindowsFormsApp1
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(46, 44);
+            this.label8.Location = new System.Drawing.Point(21, 38);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 12);
             this.label8.TabIndex = 2;
@@ -528,7 +715,7 @@ namespace WindowsFormsApp1
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("굴림", 10F);
-            this.label15.Location = new System.Drawing.Point(549, 11);
+            this.label15.Location = new System.Drawing.Point(601, 11);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(106, 14);
             this.label15.TabIndex = 1;
@@ -538,7 +725,7 @@ namespace WindowsFormsApp1
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("굴림", 10F);
-            this.label9.Location = new System.Drawing.Point(327, 11);
+            this.label9.Location = new System.Drawing.Point(463, 11);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 14);
             this.label9.TabIndex = 1;
@@ -548,7 +735,7 @@ namespace WindowsFormsApp1
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("굴림", 10F);
-            this.label7.Location = new System.Drawing.Point(79, 11);
+            this.label7.Location = new System.Drawing.Point(20, 11);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 14);
             this.label7.TabIndex = 1;
@@ -720,23 +907,23 @@ namespace WindowsFormsApp1
             // 
             // chart2
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart2.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(290, 74);
             this.chart2.Name = "chart2";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Legend = "Legend1";
-            series7.Name = "온도";
-            series7.YValuesPerPoint = 4;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Legend = "Legend1";
-            series8.Name = "습도";
-            this.chart2.Series.Add(series7);
-            this.chart2.Series.Add(series8);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "온도";
+            series3.YValuesPerPoint = 4;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "습도";
+            this.chart2.Series.Add(series3);
+            this.chart2.Series.Add(series4);
             this.chart2.Size = new System.Drawing.Size(456, 212);
             this.chart2.TabIndex = 3;
             this.chart2.Text = "chart2";
@@ -773,6 +960,15 @@ namespace WindowsFormsApp1
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label26);
+            this.tabPage4.Controls.Add(this.label21);
+            this.tabPage4.Controls.Add(this.label19);
+            this.tabPage4.Controls.Add(this.textBox_room3);
+            this.tabPage4.Controls.Add(this.textBox_room2);
+            this.tabPage4.Controls.Add(this.textBox_room1);
+            this.tabPage4.Controls.Add(this.verticalProgressBar_room3);
+            this.tabPage4.Controls.Add(this.verticalProgressBar_room2);
+            this.tabPage4.Controls.Add(this.verticalProgressBar_room1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
@@ -804,16 +1000,6 @@ namespace WindowsFormsApp1
             this.tabPage6.Text = "Exit";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(752, 291);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Calculater";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -840,6 +1026,90 @@ namespace WindowsFormsApp1
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // textBox_room1
+            // 
+            this.textBox_room1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_room1.Font = new System.Drawing.Font("굴림", 18F);
+            this.textBox_room1.Location = new System.Drawing.Point(148, 194);
+            this.textBox_room1.Name = "textBox_room1";
+            this.textBox_room1.Size = new System.Drawing.Size(46, 28);
+            this.textBox_room1.TabIndex = 1;
+            this.textBox_room1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_room2
+            // 
+            this.textBox_room2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_room2.Font = new System.Drawing.Font("굴림", 18F);
+            this.textBox_room2.Location = new System.Drawing.Point(282, 194);
+            this.textBox_room2.Name = "textBox_room2";
+            this.textBox_room2.Size = new System.Drawing.Size(46, 28);
+            this.textBox_room2.TabIndex = 1;
+            this.textBox_room2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_room3
+            // 
+            this.textBox_room3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_room3.Font = new System.Drawing.Font("굴림", 18F);
+            this.textBox_room3.Location = new System.Drawing.Point(416, 194);
+            this.textBox_room3.Name = "textBox_room3";
+            this.textBox_room3.Size = new System.Drawing.Size(46, 28);
+            this.textBox_room3.TabIndex = 1;
+            this.textBox_room3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.label19.Location = new System.Drawing.Point(140, 246);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(72, 19);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Room1";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.label21.Location = new System.Drawing.Point(274, 246);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(72, 19);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Room2";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.label26.Location = new System.Drawing.Point(408, 246);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(72, 19);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Room3";
+            // 
+            // verticalProgressBar_room3
+            // 
+            this.verticalProgressBar_room3.Location = new System.Drawing.Point(426, 35);
+            this.verticalProgressBar_room3.Maximum = 40;
+            this.verticalProgressBar_room3.Name = "verticalProgressBar_room3";
+            this.verticalProgressBar_room3.Size = new System.Drawing.Size(26, 153);
+            this.verticalProgressBar_room3.TabIndex = 0;
+            // 
+            // verticalProgressBar_room2
+            // 
+            this.verticalProgressBar_room2.Location = new System.Drawing.Point(292, 35);
+            this.verticalProgressBar_room2.Maximum = 40;
+            this.verticalProgressBar_room2.Name = "verticalProgressBar_room2";
+            this.verticalProgressBar_room2.Size = new System.Drawing.Size(26, 153);
+            this.verticalProgressBar_room2.TabIndex = 0;
+            // 
+            // verticalProgressBar_room1
+            // 
+            this.verticalProgressBar_room1.Location = new System.Drawing.Point(158, 35);
+            this.verticalProgressBar_room1.Maximum = 40;
+            this.verticalProgressBar_room1.Name = "verticalProgressBar_room1";
+            this.verticalProgressBar_room1.Size = new System.Drawing.Size(26, 153);
+            this.verticalProgressBar_room1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -868,6 +1138,8 @@ namespace WindowsFormsApp1
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -925,7 +1197,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Button button_Select;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Button button_Aircon;
         private System.Windows.Forms.Button button_Heater;
         private System.Windows.Forms.DateTimePicker DTP_Start_Time;
@@ -943,6 +1214,20 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label Max_tmp;
         private System.Windows.Forms.Label Min_tmp;
+        private System.Windows.Forms.Button button_insert_desire;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DomainUpDown domainUpDown_desire_temp;
+        private System.Windows.Forms.DomainUpDown domainUpDown_desire_wet;
+        private VerticalProgressBar verticalProgressBar_room1;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox_room3;
+        private System.Windows.Forms.TextBox textBox_room2;
+        private System.Windows.Forms.TextBox textBox_room1;
+        private VerticalProgressBar verticalProgressBar_room3;
+        private VerticalProgressBar verticalProgressBar_room2;
     }
 }
 
