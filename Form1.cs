@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -130,10 +130,10 @@ namespace WindowsFormsApp1
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //아두이노로부터 들어온 data 전체를 읽어 들임
-            // data_in = serialPort1.ReadExisting();
+            //data_in = serialPort1.ReadExisting();
 
             //아두이노로부터 \n을 만날때까지만의 dat를 읽어 들임
-            data_in = serialPort1.ReadLine();
+            data_in = serialPort1.ReadLine()+"\n";
 
             //ReadLine 이 ReadExisting 보다 안정적이고 programming 에도 용이
 
@@ -205,6 +205,32 @@ namespace WindowsFormsApp1
                 Heater_Execute = false;
                 button_Heater.Text = "난방기 가동";
             }
+
+            if (data_in.Contains("curr_temp:") == true) //현재 온도 정보 읽기
+            {
+                // 현재 온도 : curr_temp:10:20:15:\n 
+                InputSensorData = data_in.Split(':');
+                string room1 = InputSensorData[1].ToString();
+                string room2 = InputSensorData[2].ToString();
+                string room3 = InputSensorData[3].ToString();
+                textBox_room1.Text = room1;
+                textBox_room2.Text = room2;
+                textBox_room3.Text = room3;
+
+                verticalProgressBar_room1.Value = int.Parse(room1);
+                verticalProgressBar_room2.Value = int.Parse(room2);
+                verticalProgressBar_room3.Value = int.Parse(room3);
+            }
+/*
+            if (data_in.Contains("desire_temp") == true) //희망 온도 정보 읽기
+            {
+                // 희망 온도 : desire_temp:10:10:10:\n 
+                InputSensorData = data_in.Split(':');
+                string room1 = InputSensorData[1].ToString();
+                string room2 = InputSensorData[2].ToString();
+                string room3 = InputSensorData[3].ToString();
+                label_pwet.Text = room1 + room2 + room3;
+            }*/
         }
 
         private void button_OpenPort_Click(object sender, EventArgs e)
@@ -282,6 +308,26 @@ namespace WindowsFormsApp1
             listView2.Columns.Add("온도", 40);
             listView2.Columns.Add("습도", 40);
             listView2.Columns.Add("측정시각", 160);
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+
+            string LastValue_temp = "select desire_temp FROM desire_temp_wet_table ORDER BY ins_order DESC";
+            MySqlCommand cmd1 = new MySqlCommand(LastValue_temp, conn);
+            MySqlDataReader rdr_temp = cmd1.ExecuteReader();
+            rdr_temp.Read();
+            domainUpDown_desire_temp.Text = rdr_temp[0].ToString();
+            rdr_temp.Close();
+
+            string LastValue_wet = "select desire_wet FROM desire_temp_wet_table ORDER BY ins_order DESC";
+            MySqlCommand cmd2 = new MySqlCommand(LastValue_wet, conn);
+            MySqlDataReader rdr_wet = cmd2.ExecuteReader();
+            rdr_wet.Read();
+            domainUpDown_desire_wet.Text = rdr_wet[0].ToString();
+            rdr_wet.Close();
+
+            conn.Close();
+
         }
 
         private void button_Aircon_Click(object sender, EventArgs e)
@@ -309,7 +355,7 @@ namespace WindowsFormsApp1
             
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-            //차트 초기화
+
             listView2.Items.Clear();
             chart2.Series[0].Points.Clear();
             chart2.Series[1].Points.Clear();
@@ -338,8 +384,7 @@ namespace WindowsFormsApp1
             }
 
             rdr.Close();
-            
-            //차트 내 데이터 최댓값, 최솟값 얻기
+
             string call_Maxtmp = string.Format("select max(tmp) from sensors");
             MySqlCommand cmd_maxt = new MySqlCommand(call_Maxtmp, conn);
             MySqlDataReader rd_maxt = cmd_maxt.ExecuteReader();
@@ -375,8 +420,9 @@ namespace WindowsFormsApp1
 
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
-            //차트 초기화
+
             listView2.Items.Clear();
+
             chart2.Series[0].Points.Clear();
             chart2.Series[1].Points.Clear();
             i = 0;
@@ -387,11 +433,11 @@ namespace WindowsFormsApp1
             String date_start = date_from.ToString("yyyy-MM-dd HH:mm:ss");
             String date_end = date_to.ToString("yyyy-MM-dd HH:mm:ss");
 
-            string sql_sel = string.Format("select * from sensors where data_day"+
-            ">= '{0}' and data_day <='{1}'", date_start,date_end);
+            string sql_sel = string.Format("select * from sensors where data_day >= '{0}' and data_day <='{1}';", date_start,date_end);
 
             MySqlCommand cmd = new MySqlCommand(sql_sel, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
+
 
             while (rdr.Read())
             {
@@ -399,15 +445,16 @@ namespace WindowsFormsApp1
 
                 selecteditem.SubItems.Add(rdr[2].ToString());
                 selecteditem.SubItems.Add(rdr[3].ToString());
+
                 listView2.Items.Add(selecteditem);
 
                 chart2.Series[0].Points.AddXY(i, rdr[1]);
                 chart2.Series[1].Points.AddXY(i, rdr[2]);
                 i++;
+
             }
             rdr.Close();
-            
-            //차트 내 최댓값, 최솟값 얻기
+
             string call_Max_tmp = string.Format("select max(tmp) FROM sensors WHERE data_day >= '{0}' AND data_day <= '{1}'"
                 , date_start, date_end);
             MySqlCommand cmd_maxt = new MySqlCommand(call_Max_tmp, conn);
@@ -443,5 +490,44 @@ namespace WindowsFormsApp1
 
         }
 
+        private void button_insert_desire_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            String send_desire =String.Format("INSERT INTO desire_temp_wet_table(desire_temp,desire_wet) values ('{0}','{1}')"
+                ,domainUpDown_desire_temp.Text,domainUpDown_desire_wet.Text);
+            MySqlCommand cmd_insert = new MySqlCommand(send_desire, conn);
+            cmd_insert.ExecuteNonQuery();
+
+            MessageBox.Show("정상적으로 실행되었습니다.");
+        }
+
+        private void domainUpDown_desire_temp_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(domainUpDown_desire_temp.Text) > 40)
+                domainUpDown_desire_temp.Text = 40.ToString();
+            if (Convert.ToInt32(domainUpDown_desire_temp.Text) < 0)
+                domainUpDown_desire_temp.Text = 0.ToString();
+        }
+
+        private void domainUpDown_desire_wet_SelectedItemChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(domainUpDown_desire_wet.Text) > 80)
+                domainUpDown_desire_wet.Text = 80.ToString();
+            if (Convert.ToInt32(domainUpDown_desire_wet.Text) < 0)
+                domainUpDown_desire_wet.Text = 0.ToString();
+        }
+
+        private void button_Send_Click(object sender, EventArgs e)
+        {
+            string command = textBox_SendData.Text;
+            if(command.Length >0)
+            {
+                //serialPort1.Write(textBox_SendData.Text + Environment.NewLine);
+                serialPort1.WriteLine(command + "\r");
+
+                textBox_SendData.Text = "";
+            } 
+        }
     }
 }
